@@ -21,6 +21,9 @@
     <ClCompile Include="work1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="MyShaderLoader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="demo_vertex.vert">
@@ -29,5 +32,10 @@
     <None Include="demo_fragment.frag">
       <Filter>shaders</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyShaderLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

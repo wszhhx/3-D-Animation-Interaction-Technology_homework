@@ -1,4 +1,4 @@
-#version 460 core
+#version 450 core
 uniform mat4 MVP;
 attribute vec3 vCol;
 attribute vec2 vPos;

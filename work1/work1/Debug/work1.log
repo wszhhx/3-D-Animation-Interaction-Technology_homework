@@ -1,4 +1,2 @@
-﻿  work1.cpp
-    正在创建库 E:\图形学工程\21851051-张皓翔\work1\Debug\work1.lib 和对象 E:\图形学工程\21851051-张皓翔\work1\Debug\work1.exp
-LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
-  work1.vcxproj -> E:\图形学工程\21851051-张皓翔\work1\Debug\work1.exe
+﻿  MyShaderLoader.cpp
+  work1.vcxproj -> D:\图形学研究\21851051-张皓翔\work1\Debug\work1.exe
