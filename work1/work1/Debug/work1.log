@@ -1,14 +1,4 @@
-﻿    正在创建库 E:\图形学工程\21851051-张皓翔\work1\Debug\work1.lib 和对象 E:\图形学工程\21851051-张皓翔\work1\Debug\work1.exp
-LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewAttachShader
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewCompileShader
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewCreateProgram
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewCreateShader
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewDeleteShader
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetProgramInfoLog
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetProgramiv
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetShaderInfoLog
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewGetShaderiv
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewLinkProgram
-MyShaderLoader.obj : warning LNK4049: 已导入本地定义的符号 ___glewShaderSource
+﻿  work1.cpp
+e:\图形学工程\21851051-张皓翔\work1\work1\work1.cpp(81): warning C4305: “参数”: 从“double”到“GLfloat”截断
+e:\图形学工程\21851051-张皓翔\work1\work1\work1.cpp(55): warning C4101: “VBOs”: 未引用的局部变量
   work1.vcxproj -> E:\图形学工程\21851051-张皓翔\work1\Debug\work1.exe
