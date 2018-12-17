@@ -16,6 +16,9 @@
     <Filter Include="shaders">
       <UniqueIdentifier>{09c7fd22-75fe-4c3b-b984-9372f8be349b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes">
+      <UniqueIdentifier>{e6578446-34b3-44a4-88ea-ad643dff2d5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="work1.cpp">
@@ -36,6 +39,12 @@
   <ItemGroup>
     <ClInclude Include="MyShaderLoader.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\Cube.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\Teapot.h">
+      <Filter>shapes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

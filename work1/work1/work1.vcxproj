@@ -167,6 +167,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyShaderLoader.h" />
+    <ClInclude Include="shapes\Cube.h" />
+    <ClInclude Include="shapes\Teapot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
