@@ -94,7 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\图形学工程\21851051-张皓翔\OpenGLStuff\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\图形学工程\21851051-张皓翔\OpenGLStuff\glm;E:\图形学工程\21851051-张皓翔\OpenGLStuff\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -162,6 +162,8 @@
     <ClCompile Include="work1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cube_fragment.frag" />
+    <None Include="cube_vertex.vert" />
     <None Include="demo_fragment.frag" />
     <None Include="demo_vertex.vert" />
   </ItemGroup>

@@ -35,6 +35,12 @@
     <None Include="demo_fragment.frag">
       <Filter>shaders</Filter>
     </None>
+    <None Include="cube_vertex.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="cube_fragment.frag">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyShaderLoader.h">
