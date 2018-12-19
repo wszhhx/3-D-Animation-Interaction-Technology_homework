@@ -1,5 +1,5 @@
 #include "Camera.h"
-
+#include<iostream>
 
 
 Camera::Camera(float sensivitity = 1.0)
@@ -7,13 +7,15 @@ Camera::Camera(float sensivitity = 1.0)
 	MAX_PITCH_ANGLE = 89;
 
 	viewUp = glm::vec3(0.0, 1.0, 0.0);
-	forward = glm::vec3(0.0, 0.0, -1.0);
+	forward = glm::normalize(glm::vec3(0.0, 0.0, -1.0));
 	side = glm::vec3(1.0, 0.0, 0.0);
-	position = glm::vec3(0.0, 0.3, 0.8);
+	position = glm::vec3(0.0, 0.0, 1.8);
+
+	
 	
 	firstMouseMove = true;
 	mouseSensitivity = sensivitity;
-	moveSpeed = 0.5;
+	moveSpeed = 2;
 }
 
 
@@ -30,7 +32,7 @@ void Camera::handleMouseMove(float xPos, float yPos)
 		firstMouseMove = false;
 	}
 
-	GLfloat xOffset = xPos - lastMousePosition.x;
+	GLfloat xOffset = lastMousePosition.x - xPos;
 	GLfloat yOffset = lastMousePosition.y - yPos;
 
 	lastMousePosition.x = xPos;
@@ -38,7 +40,7 @@ void Camera::handleMouseMove(float xPos, float yPos)
 
 	xOffset *= mouseSensitivity;
 	yOffset *= mouseSensitivity;
-
+	
 	pitchAngle += yOffset;
 	yawAngle += xOffset;
 
@@ -50,6 +52,7 @@ void Camera::handleMouseMove(float xPos, float yPos)
 		yawAngle -= 360;
 	if (yawAngle < 0)
 		yawAngle += 360;
+	updateVector();
 }
 
 void Camera::handleKeyPress(int key, GLfloat deltaTime)
@@ -72,6 +75,7 @@ void Camera::handleKeyPress(int key, GLfloat deltaTime)
 	default:
 		break;
 	}
+	printf("( %f , %f )\n", position.x, position.y);
 }
 
 void Camera::updateVector()
