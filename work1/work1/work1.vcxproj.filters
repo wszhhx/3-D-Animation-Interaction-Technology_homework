@@ -13,13 +13,50 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="shaders">
+      <UniqueIdentifier>{09c7fd22-75fe-4c3b-b984-9372f8be349b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shapes">
+      <UniqueIdentifier>{e6578446-34b3-44a4-88ea-ad643dff2d5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="work1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\OpenGLStuff\src\glad.c">
+    <ClCompile Include="MyShaderLoader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="demo_vertex.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="demo_fragment.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="cube_vertex.vert">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="cube_fragment.frag">
+      <Filter>shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyShaderLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\Cube.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="shapes\Teapot.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
