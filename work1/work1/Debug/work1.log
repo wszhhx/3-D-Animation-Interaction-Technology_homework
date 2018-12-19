@@ -1,4 +1,5 @@
 ﻿  Camera.cpp
+  MyShaderLoader.cpp
   work1.cpp
 d:\图形学研究\21851051-张皓翔\work1\work1\work1.cpp(29): warning C4305: “参数”: 从“double”到“float”截断
 d:\图形学研究\21851051-张皓翔\work1\work1\work1.cpp(111): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据

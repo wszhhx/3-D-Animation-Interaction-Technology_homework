@@ -77,8 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\headers;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>D:\图形学研究\21851051-张皓翔\OpenGLStuff\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\图形学研究\21851051-张皓翔\OpenGLStuff\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\图形学工程\21851051-张皓翔\OpenGLStuff\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\图形学研究\21851051-张皓翔\OpenGLStuff\glm;D:\图形学研究\21851051-张皓翔\OpenGLStuff\eigen3;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
