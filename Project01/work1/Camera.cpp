@@ -75,7 +75,7 @@ void Camera::handleKeyPress(int key, GLfloat deltaTime)
 	default:
 		break;
 	}
-	printf("( %f , %f )\n", position.x, position.y);
+	//printf("( %f , %f , %f )\n", position.x, position.y, position.z);
 }
 
 void Camera::updateVector()
