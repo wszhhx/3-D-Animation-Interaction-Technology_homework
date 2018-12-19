@@ -1,7 +1,11 @@
-#version 450 core
+#version 460 core
 
+in vec3 vertColor;
+in vec2 textCoordination;
 out vec4 FColor;
+uniform sampler2D tex;
+
 void main(){
-	FColor = vec4(0.4941f,0.8078f,0.9569f,1.0f);
+	FColor = texture2D(tex, vec2(textCoordination.s, -textCoordination.t));
 
 }
