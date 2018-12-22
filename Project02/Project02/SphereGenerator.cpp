@@ -11,8 +11,12 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 	stepY = PI / stepNum;
 	stepRzx = PI / stepNum;
 
+	stepS = 1.0 / (2 * stepNum);
+	stepT = 1.0 / stepNum;
+
 	float theta = 0;
 	float gama = stepY;
+
 
 	vertexArray = NULL;
 	vertexNum = 0;
@@ -22,23 +26,30 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 		vertexVector.push_back(0.0);				//x
 		vertexVector.push_back(radius);				//y
 		vertexVector.push_back(0.0);				//z
-		for (int j = 0; j < 5; ++j)		//为rgb和st坐标预留空间
+		for (int j = 0; j < 3; ++j)		//为rgb坐标预留空间
 			vertexVector.push_back(0.0);
+		vertexVector.push_back(i*stepS + stepS / 2);//s
+		vertexVector.push_back(0);					//t
 		vertexNum++;
 		//第二个点
 		vertexVector.push_back(radius * sin(gama) * sin(theta));	
 		vertexVector.push_back(radius * cos(gama));					
 		vertexVector.push_back(radius * sin(gama) * cos(theta));	
-		for (int j = 0; j < 5; ++j)		
+		for (int j = 0; j < 3; ++j)		
 			vertexVector.push_back(0.0);
+		vertexVector.push_back(0);
+		vertexVector.push_back(i*stepS);
 		vertexNum++;
 		//第三个点
 		vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));	
 		vertexVector.push_back(radius * cos(gama));						
 		vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));	
-		for (int j = 0; j < 5; ++j)		
+		for (int j = 0; j < 3; ++j)		
 			vertexVector.push_back(0.0);
+		vertexVector.push_back(i*stepS + stepS);
+		vertexVector.push_back(stepT);
 		vertexNum++;
+
 	}
 
 	for (int i = 1; i < stepNum; ++i) {	//计算球体中间的三角面环带					
@@ -50,44 +61,56 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 			vertexVector.push_back(radius * sin(gama) * sin(theta));	
 			vertexVector.push_back(radius * cos(gama));					
 			vertexVector.push_back(radius * sin(gama) * cos(theta));	
-			for (int j = 0; j < 5; ++j)		
+			for (int j = 0; j < 3; ++j)		
 				vertexVector.push_back(0.0);
+			vertexVector.push_back(j * stepS);
+			vertexVector.push_back(i * stepT);
 			vertexNum++;
 			//	第二个点
 			vertexVector.push_back(radius * sin(gama + stepY) * sin(theta));	
 			vertexVector.push_back(radius * cos(gama + stepY));					
 			vertexVector.push_back(radius * sin(gama + stepY) * cos(theta));	
-			for (int j = 0; j < 5; ++j)		
+			for (int j = 0; j < 3; ++j)		
 				vertexVector.push_back(0.0);
+			vertexVector.push_back(j * stepS);
+			vertexVector.push_back(i*stepT + stepT);
 			vertexNum++;
 			//	第三个点
 			vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));
 			vertexVector.push_back(radius * cos(gama));
 			vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));
-			for (int j = 0; j < 5; ++j)
+			for (int j = 0; j < 3; ++j)
 				vertexVector.push_back(0.0);
+			vertexVector.push_back(j * stepS + stepS);
+			vertexVector.push_back(stepT);
 			vertexNum++;
 			//右下方三角面片
 			//	第一个点
 			vertexVector.push_back(radius * sin(gama + stepY) * sin(theta));
 			vertexVector.push_back(radius * cos(gama + stepY));
 			vertexVector.push_back(radius * sin(gama + stepY) * cos(theta));
-			for (int j = 0; j < 5; ++j)
+			for (int j = 0; j < 3; ++j)
 				vertexVector.push_back(0.0);
+			vertexVector.push_back(j * stepS);
+			vertexVector.push_back(i*stepT + stepT);
 			vertexNum++;
 			//	第二个点
 			vertexVector.push_back(radius * sin(gama + stepY) * sin(theta + stepRzx));
 			vertexVector.push_back(radius * cos(gama + stepY));
 			vertexVector.push_back(radius * sin(gama + stepY) * cos(theta + stepRzx));
-			for (int j = 0; j < 5; ++j)
+			for (int j = 0; j < 3; ++j)
 				vertexVector.push_back(0.0);
+			vertexVector.push_back(j*stepS + stepS);
+			vertexVector.push_back(i*stepT + stepT);
 			vertexNum++;
 			//	第三个点
 			vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));
 			vertexVector.push_back(radius * cos(gama));
 			vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));
-			for (int j = 0; j < 5; ++j)
+			for (int j = 0; j < 3; ++j)
 				vertexVector.push_back(0.0);
+			vertexVector.push_back(j * stepS + stepS);
+			vertexVector.push_back(stepT);
 			vertexNum++;
 		}
 	}		
@@ -101,22 +124,28 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 		vertexVector.push_back(radius * sin(gama) * sin(theta));			
 		vertexVector.push_back(radius * cos(gama));				
 		vertexVector.push_back(radius * sin(gama) * cos(theta));				
-		for (int j = 0; j < 5; ++j)		//为rgb和st坐标预留空间
+		for (int j = 0; j < 3; ++j)		//为rgb和st坐标预留空间
 			vertexVector.push_back(0.0);
+		vertexVector.push_back(i*stepS);
+		vertexVector.push_back(1 - stepT);
 		vertexNum++;
 		//球体最下方的点
 		vertexVector.push_back(0);
 		vertexVector.push_back(radius * cos(gama));
 		vertexVector.push_back(0);
-		for (int j = 0; j < 5; ++j)
+		for (int j = 0; j < 3; ++j)
 			vertexVector.push_back(0.0);
+		vertexVector.push_back(i*stepS + stepS / 2);
+		vertexVector.push_back(1);
 		vertexNum++;
 		//第三个点
 		vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));
 		vertexVector.push_back(radius * cos(gama));
 		vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));
-		for (int j = 0; j < 5; ++j)
+		for (int j = 0; j < 3; ++j)
 			vertexVector.push_back(0.0);
+		vertexVector.push_back(i*stepS + stepS);
+		vertexVector.push_back(1 - stepT);
 		vertexNum++;
 	}
 
@@ -135,7 +164,8 @@ void SphereGenerator::PrintVertexInfo() {
 	}
 	int index = 1;
 	for (int i = 0; i < vertexNum; i += 8) {
-		printf("顶点 %d : (%.4f , %.4f, %.4f)\n", index, vertexArray[i], vertexArray[i + 1], vertexArray[i + 2]);
+		printf("顶点 %d —— 坐标XYZ : (%.4f , %.4f, %.4f)  纹理ST：(%.4f , %.4f)\n", index, vertexArray[i], vertexArray[i + 1], vertexArray[i + 2],
+			vertexArray[i+6], vertexArray[i+7]);
 		index += 1;
 	}
 }
