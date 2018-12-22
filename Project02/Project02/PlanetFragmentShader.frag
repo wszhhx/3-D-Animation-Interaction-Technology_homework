@@ -1,7 +1,10 @@
 #version 460 core
 
 out vec4 fColor;
+smooth in vec2 textCoordination;
+
+uniform sampler2D texSampler;
 
 void main(){
-	fColor = vec4(1.0,1.0,0.4,1.0);
+	fColor = texture2D(texSampler,textCoordination);
 }

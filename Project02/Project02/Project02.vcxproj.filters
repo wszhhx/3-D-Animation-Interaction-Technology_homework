@@ -27,9 +27,6 @@
     <ClCompile Include="MyShaderLoader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="CallBackFuncs.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="SphereGenerator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -39,9 +36,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MyShaderLoader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="CallBackFuncs.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SphereGenerator.h">

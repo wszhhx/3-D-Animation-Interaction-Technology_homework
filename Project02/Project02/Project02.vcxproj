@@ -155,14 +155,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CallBackFuncs.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="MyShaderLoader.cpp" />
     <ClCompile Include="Project02.cpp" />
     <ClCompile Include="SphereGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CallBackFuncs.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="MyShaderLoader.h" />
     <ClInclude Include="SphereGenerator.h" />
