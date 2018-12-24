@@ -5,6 +5,7 @@
 class SphereGenerator
 {
 public:
+	SphereGenerator();
 	SphereGenerator(float radius,int stepnum);
 	~SphereGenerator();
 	std::vector<GLfloat> vertexVector;

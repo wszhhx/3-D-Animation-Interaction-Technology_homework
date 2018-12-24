@@ -5,7 +5,7 @@
 class Camera
 {
 public:
-	Camera(float);
+	Camera(float,float);
 	~Camera();
 
 	glm::vec3 position;					//记录相机世界坐标

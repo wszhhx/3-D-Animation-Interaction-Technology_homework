@@ -2,6 +2,10 @@
 #include "glm/glm.hpp"
 #define PI 3.1415926
 
+SphereGenerator::SphereGenerator() {
+
+}
+
 SphereGenerator::SphereGenerator(float radius,int stepnum)
 {
 	if (stepnum < 4) {

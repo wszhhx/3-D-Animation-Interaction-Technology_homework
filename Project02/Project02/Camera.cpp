@@ -2,14 +2,14 @@
 #include<iostream>
 
 
-Camera::Camera(float sensivitity = 1.0)
+Camera::Camera(float sensivitity = 1.0, float depth = 1.0)
 {
 	MAX_PITCH_ANGLE = 89;
 
 	viewUp = glm::vec3(0.0, 1.0, 0.0);
 	forward = glm::normalize(glm::vec3(0.0, 0.0, -1.0));
 	side = glm::vec3(1.0, 0.0, 0.0);
-	position = glm::vec3(0.0, 0.0, 1.8);
+	position = glm::vec3(0.0, 0.0, depth);
 
 	
 	
