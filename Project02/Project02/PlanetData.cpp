@@ -10,7 +10,7 @@ PlanetData::PlanetData(int _daypersecond, float _rotationt, float _revolutiont, 
 	revolutionT = _revolutiont;
 	sunD = _sund;
 	initialAngle = _inita;
-	PI = glm::radians(180.0);
+	PI = (float)glm::radians(180.0);
 	lastTime = 0.0;
 
 	rotation = 0;
@@ -25,11 +25,11 @@ PlanetData::PlanetData(int _daypersecond, float _rotationt, float _revolutiont, 
 }
 
 void PlanetData::UpdateData() {
-	deltaTime = glfwGetTime() - lastTime;
-	lastTime = glfwGetTime();
+	deltaTime = (GLfloat)glfwGetTime() - lastTime;
+	lastTime = (GLfloat)glfwGetTime();
 	rotateMatrix = glm::mat4(1);
 
-	rotation = isClockWise ? (rotation - 360.0 / rotationT * dayPerSecond * deltaTime)
+	rotation = isClockWise ? (rotation - 360.0 / rotationT * dayPerSecond * (float)deltaTime)
 		: (rotation + 360.0 / rotationT * dayPerSecond * deltaTime);
 	if (rotation > 360)
 		rotation -= 360;
@@ -37,7 +37,7 @@ void PlanetData::UpdateData() {
 		rotation += 360;
 	std::cout << rotation << std::endl;
 
-	revolution = initialAngle + 360.0 / revolutionT * dayPerSecond * deltaTime;
+	revolution = initialAngle + 360.0 / revolutionT * dayPerSecond * (float)deltaTime;
 	if (revolution > 360)
 		revolution -= 360;
 	if (revolution < 0)

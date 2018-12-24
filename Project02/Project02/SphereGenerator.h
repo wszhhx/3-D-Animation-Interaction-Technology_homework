@@ -1,6 +1,9 @@
-#include<GL/glew.h>
-#include<iostream>
-#include<vector>
+#pragma once
+
+#include <GL/glew.h>
+#include <iostream>
+#include <vector>
+#include "PlanetData.h"
 
 class SphereGenerator
 {
@@ -11,7 +14,7 @@ public:
 	std::vector<GLfloat> vertexVector;
 	GLfloat *vertexArray;
 	GLuint vertexNum;
-	
+	PlanetData coreData;
 
 	void PrintVertexInfo();
 private:
