@@ -15,7 +15,7 @@ public:
 	GLfloat *vertexArray;
 	GLuint vertexNum;
 	PlanetData coreData;
-
+	GLfloat radius;
 	void PrintVertexInfo();
 private:
 	

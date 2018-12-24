@@ -12,7 +12,7 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 		printf("error: in SphereGenerator() 步长过小！\n");
 		exit(0);
 	}
-	
+	this->radius = radius;
 
 	stepNum = stepnum;
 	stepY = PI / (stepNum + 1);

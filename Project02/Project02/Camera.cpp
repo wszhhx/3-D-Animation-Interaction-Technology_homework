@@ -1,5 +1,5 @@
 #include "Camera.h"
-#include<iostream>
+
 
 
 Camera::Camera(float sensivitity = 1.0, float depth = 1.0)
@@ -92,8 +92,19 @@ void Camera::updateVector()
 	side = glm::normalize(newSide);
 }
 
-void Camera::FocusPlanet(PlanetData* planet) {	//摄像机跟随某星球
+void Camera::FocusPlanet(SphereGenerator* planet) {	//摄像机跟随某星球
 	focusPlanet = planet;
+
+	glm::mat4 camTrans = glm::mat4(1);
+	glm::vec3 transVec = (planet->coreData.position - position) -
+		glm::normalize(planet->coreData.position - position) * planet->radius * (GLfloat)2.0;
+	camTrans = glm::translate(camTrans, transVec);
+	position = camTrans * glm::vec4(position,1.0);
+	
+	forward = glm::normalize(planet->coreData.position - position);
+	glm::mat4 tempRotate = glm::mat4(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1);
+	//tempRotate = glm::rotate(tempRotate, glm::radians(-90.0), glm::vec3(0, 1, 0));   //为何同样的参数类型其他地方都不会报参数错误，只有这里会报，MMP
+	side = glm::vec4(forward, 1.0) * tempRotate;
 }
 
 

@@ -35,7 +35,6 @@ void PlanetData::UpdateData() {
 		rotation -= 360;
 	if (rotation < 0)
 		rotation += 360;
-	std::cout << rotation << std::endl;
 
 	revolution = initialAngle + 360.0 / revolutionT * dayPerSecond * (float)deltaTime;
 	if (revolution > 360)

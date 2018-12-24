@@ -2,8 +2,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
-
-#include "PlanetData.h"
+#include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
+#include "SphereGenerator.h"
 
 class Camera
 {
@@ -19,7 +20,7 @@ public:
 	void handleKeyPress(int, GLfloat);  //处理键盘按键事件（相机位置变换）
 	void updateVector();
 
-	void FocusPlanet(PlanetData*);
+	void FocusPlanet(SphereGenerator*);
 private:
 	float MAX_PITCH_ANGLE;				//避免出现万向锁而设定的最大俯仰角为89度
 	
@@ -33,6 +34,6 @@ private:
 	bool firstMouseMove;				//鼠标是否是第一次移动
 	float mouseSensitivity;				//记录鼠标灵敏度
 
-	PlanetData *focusPlanet;
+	SphereGenerator *focusPlanet;
 };
 
