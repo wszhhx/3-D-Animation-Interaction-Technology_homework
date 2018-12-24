@@ -1,5 +1,5 @@
-
 #include "PlanetData.h"
+
 
 PlanetData::PlanetData() {
 
@@ -26,11 +26,9 @@ PlanetData::PlanetData(int _daypersecond, float _rotationt, float _revolutiont, 
 }
 
 void PlanetData::UpdateData() {
-	deltaTime = (GLfloat)glfwGetTime() - lastTime;
-	lastTime = (GLfloat)glfwGetTime();
 	rotateMatrix = glm::mat4(1);
 
-	rotation = isClockWise ? (rotation - 360.0 / rotationT * dayPerSecond * (float)deltaTime)
+	rotation = isClockWise ? (rotation - 360.0 / rotationT * dayPerSecond * deltaTime)
 		: (rotation + 360.0 / rotationT * dayPerSecond * deltaTime);
 	if (rotation > 360)
 		rotation -= 360;

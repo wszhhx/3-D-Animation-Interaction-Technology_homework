@@ -1,7 +1,7 @@
 #include<cstdlib>
 #include<iostream>
 
-#include<GL/glew.h>
+
 
 #include "MyShaderLoader.h"
 
