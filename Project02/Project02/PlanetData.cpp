@@ -1,3 +1,4 @@
+
 #include "PlanetData.h"
 
 PlanetData::PlanetData() {
@@ -36,14 +37,14 @@ void PlanetData::UpdateData() {
 	if (rotation < 0)
 		rotation += 360;
 
-	revolution = initialAngle + 360.0 / revolutionT * dayPerSecond * (float)deltaTime;
+	revolution += 360.0 / revolutionT * dayPerSecond * (float)deltaTime;
 	if (revolution > 360)
 		revolution -= 360;
 	if (revolution < 0)
 		revolution += 360;
 
-	position.z = sunD * sin(glm::radians(initialAngle));
-	position.x = sunD * cos(glm::radians(initialAngle));
+	position.z = sunD * sin(glm::radians(revolution));
+	position.x = sunD * cos(glm::radians(revolution));
 	position.y = 0;
 
 	rotateMatrix = glm::rotate(rotateMatrix, glm::radians(rotation), glm::vec3(0, 1, 0));

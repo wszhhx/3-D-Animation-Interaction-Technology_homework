@@ -11,7 +11,7 @@ Camera::Camera(float sensivitity = 1.0, float depth = 1.0)
 	side = glm::vec3(1.0, 0.0, 0.0);
 	position = glm::vec3(0.0, 0.0, depth);
 
-	focusPlanet = NULL;
+	focusPlanet = -1;
 	
 	firstMouseMove = true;
 	mouseSensitivity = sensivitity;
@@ -52,6 +52,7 @@ void Camera::handleMouseMove(float xPos, float yPos)
 	if (yawAngle < 0)
 		yawAngle += 360;
 	updateVector();
+	
 }
 
 void Camera::handleKeyPress(int key, GLfloat deltaTime)
@@ -92,19 +93,69 @@ void Camera::updateVector()
 	side = glm::normalize(newSide);
 }
 
-void Camera::FocusPlanet(SphereGenerator* planet) {	//摄像机跟随某星球
-	focusPlanet = planet;
-
-	glm::mat4 camTrans = glm::mat4(1);
-	glm::vec3 transVec = (planet->coreData.position - position) -
-		glm::normalize(planet->coreData.position - position) * planet->radius * (GLfloat)2.0;
-	camTrans = glm::translate(camTrans, transVec);
-	position = camTrans * glm::vec4(position,1.0);
+void Camera::updateSphericalCoord() {
 	
-	forward = glm::normalize(planet->coreData.position - position);
-	glm::mat4 tempRotate = glm::mat4(0, 0, 1, 0, 0, 1, 0, 0, -1, 0, 0, 0, 0, 0, 0, 1);
-	//tempRotate = glm::rotate(tempRotate, glm::radians(-90.0), glm::vec3(0, 1, 0));   //为何同样的参数类型其他地方都不会报参数错误，只有这里会报，MMP
-	side = glm::vec4(forward, 1.0) * tempRotate;
+	float gama = 90.0 - pitchAngle;
+	float theta = yawAngle;
+	position = planetEntities[focusPlanet].coreData.position;
+	/*position.x = planetEntities[focusPlanet].coreData.position.x + aimD * sin(glm::radians(gama)) * sin(glm::radians(theta));
+	position.y = planetEntities[focusPlanet].coreData.position.y + aimD * cos(glm::radians(gama));
+	position.z = planetEntities[focusPlanet].coreData.position.z + aimD * sin(glm::radians(gama)) * cos(glm::radians(theta));
+	printf("CAM:%f  %f  %f\n", position.x, position.y, position.z);
+	printf("AIM:%f  %f  %f\n", planetEntities[focusPlanet].coreData.position.x, planetEntities[focusPlanet].coreData.position.y, 
+		planetEntities[focusPlanet].coreData.position.z);*/
+}
+
+void Camera::FocusPlanet(int planet) {	//摄像机跟随某星球
+	focusPlanet = planet;
+	aimD = planetEntities[planet].radius * 3;
+	std::cout << aimD << std::endl;
+	float distance = glm::length(planetEntities[planet].coreData.position - position) + aimD;
+	glm::vec3 planetPos = planetEntities[planet].coreData.position;
+	glm::mat4 camTrans = glm::mat4(1);
+	glm::vec3 aimVec = planetPos - position;
+	/*glm::vec3 transVec = (planetEntities[planet].coreData.position - position) -
+		glm::normalize(planetEntities[planet].coreData.position - position) * aimD;*/
+	glm::vec3 transVec = aimVec - forward * aimD;
+	camTrans = glm::translate(camTrans, transVec);
+	position += transVec;//= camTrans * glm::vec4(position,1.0);
+	
+	/*float theta, gama;
+	float dY;
+	
+	glm::vec3 planetPos = planetEntities[planet].coreData.position;
+	dY = glm::length(glm::vec2(planetPos.z - position.z, planetPos.x - position.x));
+	gama = acosf(position.y / aimD) * (180 / glm::radians(180.0));
+
+	if (position.z > planetEntities[planet].coreData.position.z) {
+		if (position.x > planetEntities[planet].coreData.position.x) {
+			theta = asinf((position.z - planetPos.z) / dY) * (180 / glm::radians(180.0));
+		}
+		else {
+			theta = -asinf((position.z - planetPos.z) / dY) * (180 / glm::radians(180.0));
+		}
+	}
+	else {
+		if (position.x > planetEntities[planet].coreData.position.x) {
+			theta = asinf((position.z - planetPos.z) / dY) * (180 / glm::radians(180.0));
+		}
+		else {
+			theta = -asinf((position.z - planetPos.z) / dY) * (180 / glm::radians(180.0));
+		}
+	}*/
+	
+	/*printf("%f %f\n", gama, theta);
+	pitchAngle = 90.0 - gama;
+	yawAngle = theta;
+	if (pitchAngle > MAX_PITCH_ANGLE)
+		pitchAngle = MAX_PITCH_ANGLE;
+	if (pitchAngle < -MAX_PITCH_ANGLE)
+		pitchAngle = -MAX_PITCH_ANGLE;
+	if (yawAngle > 360)
+		yawAngle -= 360;
+	if (yawAngle < 0)
+		yawAngle += 360;
+	*/
 }
 
 

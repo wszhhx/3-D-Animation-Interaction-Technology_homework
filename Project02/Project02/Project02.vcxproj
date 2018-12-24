@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\图形学研究\21851051-张皓翔\OpenGLStuff\headers;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\图形学研究\21851051-张皓翔\OpenGLStuff\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\headers;D:\图形学研究\21851051-张皓翔\OpenGLStuff\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\图形学研究\21851051-张皓翔\OpenGLStuff\libs;E:\图形学工程\21851051-张皓翔\OpenGLStuff\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\图形学研究\21851051-张皓翔\OpenGLStuff\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\图形学工程\21851051-张皓翔\OpenGLStuff\glm;D:\图形学研究\21851051-张皓翔\OpenGLStuff\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,12 +163,14 @@
     <ClCompile Include="MyShaderLoader.cpp" />
     <ClCompile Include="PlanetData.cpp" />
     <ClCompile Include="Project02.cpp" />
+    <ClCompile Include="PublicData.cpp" />
     <ClCompile Include="SphereGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="MyShaderLoader.h" />
     <ClInclude Include="PlanetData.h" />
+    <ClInclude Include="PublicData.h" />
     <ClInclude Include="SphereGenerator.h" />
   </ItemGroup>
   <ItemGroup>
