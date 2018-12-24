@@ -11,7 +11,7 @@ Camera::Camera(float sensivitity = 1.0, float depth = 1.0)
 	side = glm::vec3(1.0, 0.0, 0.0);
 	position = glm::vec3(0.0, 0.0, depth);
 
-	
+	focusPlanet = NULL;
 	
 	firstMouseMove = true;
 	mouseSensitivity = sensivitity;
@@ -90,6 +90,10 @@ void Camera::updateVector()
 	newSide.y = 0.0;
 	newSide.z = -sin(glm::radians(yawAngle));
 	side = glm::normalize(newSide);
+}
+
+void Camera::FocusPlanet(PlanetData* planet) {	//ÉãÏñ»ú¸úËæÄ³ÐÇÇò
+	focusPlanet = planet;
 }
 
 
