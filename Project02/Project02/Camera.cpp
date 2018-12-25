@@ -97,13 +97,13 @@ void Camera::updateSphericalCoord() {
 	
 	float gama = 90.0 - pitchAngle;
 	float theta = yawAngle;
-	position = planetEntities[focusPlanet].coreData.position;
-	/*position.x = planetEntities[focusPlanet].coreData.position.x + aimD * sin(glm::radians(gama)) * sin(glm::radians(theta));
+	
+	position.x = planetEntities[focusPlanet].coreData.position.x + aimD * sin(glm::radians(gama)) * sin(glm::radians(theta));
 	position.y = planetEntities[focusPlanet].coreData.position.y + aimD * cos(glm::radians(gama));
 	position.z = planetEntities[focusPlanet].coreData.position.z + aimD * sin(glm::radians(gama)) * cos(glm::radians(theta));
-	printf("CAM:%f  %f  %f\n", position.x, position.y, position.z);
-	printf("AIM:%f  %f  %f\n", planetEntities[focusPlanet].coreData.position.x, planetEntities[focusPlanet].coreData.position.y, 
-		planetEntities[focusPlanet].coreData.position.z);*/
+	//printf("Camposition: (%f, %f, %f)\n", position.x, position.y, position.z);
+	//printf("PlanetPosit: (%f, %f, %f)\n", planetEntities[focusPlanet].coreData.position.x,
+	//	planetEntities[focusPlanet].coreData.position.y, planetEntities[focusPlanet].coreData.position.z);
 }
 
 void Camera::FocusPlanet(int planet) {	//ÉãÏñ»ú¸úËæÄ³ÐÇÇò
@@ -114,12 +114,11 @@ void Camera::FocusPlanet(int planet) {	//ÉãÏñ»ú¸úËæÄ³ÐÇÇò
 	glm::vec3 planetPos = planetEntities[planet].coreData.position;
 	glm::mat4 camTrans = glm::mat4(1);
 	glm::vec3 aimVec = planetPos - position;
-	/*glm::vec3 transVec = (planetEntities[planet].coreData.position - position) -
-		glm::normalize(planetEntities[planet].coreData.position - position) * aimD;*/
+	/*glm::vec3 transvec = (planetentities[planet].coredata.position - position) -
+		glm::normalize(planetentities[planet].coredata.position - position) * aimd;*/
 	glm::vec3 transVec = aimVec - forward * aimD;
 	camTrans = glm::translate(camTrans, transVec);
-	position += transVec;//= camTrans * glm::vec4(position,1.0);
-	
+	position = camTrans * glm::vec4(position,1.0);
 	/*float theta, gama;
 	float dY;
 	

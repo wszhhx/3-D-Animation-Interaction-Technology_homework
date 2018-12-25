@@ -25,7 +25,8 @@ PlanetData::PlanetData(int _daypersecond, float _rotationt, float _revolutiont, 
 	rotateMatrix = glm::mat4(1);
 }
 
-void PlanetData::UpdateData() {
+void PlanetData::UpdateData(GLfloat deltaTime) {
+	
 	rotateMatrix = glm::mat4(1);
 
 	rotation = isClockWise ? (rotation - 360.0 / rotationT * dayPerSecond * deltaTime)

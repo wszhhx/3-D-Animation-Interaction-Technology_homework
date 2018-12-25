@@ -18,7 +18,7 @@ public:
 	glm::vec3 position;
 	glm::mat4 rotateMatrix;
 
-	void UpdateData();
+	void UpdateData(GLfloat);
 private:
 	int dayPerSecond;
 	float rotation;
