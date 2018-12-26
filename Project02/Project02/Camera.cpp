@@ -30,7 +30,6 @@ void Camera::handleMouseMove(float xPos, float yPos)
 		lastMousePosition.y = yPos;
 		firstMouseMove = false;
 	}
-
 	GLfloat xOffset = lastMousePosition.x - xPos;
 	GLfloat yOffset = lastMousePosition.y - yPos;
 
@@ -52,7 +51,8 @@ void Camera::handleMouseMove(float xPos, float yPos)
 	if (yawAngle < 0)
 		yawAngle += 360;
 	updateVector();
-	
+	if (focusPlanet != -1)
+		updateSphericalCoord();
 }
 
 void Camera::handleKeyPress(int key, GLfloat deltaTime)
@@ -95,12 +95,13 @@ void Camera::updateVector()
 
 void Camera::updateSphericalCoord() {
 	
-	float gama = 90.0 - pitchAngle;
+	float gama = 90 + pitchAngle;
 	float theta = yawAngle;
 	
 	position.x = planetEntities[focusPlanet].coreData.position.x + aimD * sin(glm::radians(gama)) * sin(glm::radians(theta));
 	position.y = planetEntities[focusPlanet].coreData.position.y + aimD * cos(glm::radians(gama));
 	position.z = planetEntities[focusPlanet].coreData.position.z + aimD * sin(glm::radians(gama)) * cos(glm::radians(theta));
+
 	//printf("Camposition: (%f, %f, %f)\n", position.x, position.y, position.z);
 	//printf("PlanetPosit: (%f, %f, %f)\n", planetEntities[focusPlanet].coreData.position.x,
 	//	planetEntities[focusPlanet].coreData.position.y, planetEntities[focusPlanet].coreData.position.z);

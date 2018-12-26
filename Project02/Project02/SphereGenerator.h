@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "PlanetData.h"
-
+#include "glm/glm.hpp"
 class SphereGenerator
 {
 public:

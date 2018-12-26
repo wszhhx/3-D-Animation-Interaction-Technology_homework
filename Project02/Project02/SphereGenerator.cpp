@@ -1,7 +1,7 @@
 #include "SphereGenerator.h"
-#include "glm/glm.hpp"
-#define PI 3.1415926
 
+#define PI 3.1415926
+//顶点数据结构：|x,y,z|s,t|x',y',z'|
 SphereGenerator::SphereGenerator() {
 
 }
@@ -12,6 +12,7 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 		printf("error: in SphereGenerator() 步长过小！\n");
 		exit(0);
 	}
+	glm::vec3 normal;
 	this->radius = radius;
 
 	stepNum = stepnum;
@@ -33,28 +34,34 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 		vertexVector.push_back(radius * sin(gama) * sin(theta));	
 		vertexVector.push_back(radius * cos(gama));					
 		vertexVector.push_back(radius * sin(gama) * cos(theta));	
-		for (int j = 0; j < 3; ++j)		
-			vertexVector.push_back(0.0);
 		vertexVector.push_back(i*stepS);
 		vertexVector.push_back(stepT);
+		normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta), radius * cos(gama), radius * sin(gama) * cos(theta)));
+		vertexVector.push_back(normal.x);
+		vertexVector.push_back(normal.y);
+		vertexVector.push_back(normal.z);
 		vertexNum++;
 
 		vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));	
 		vertexVector.push_back(radius * cos(gama));						
 		vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));	
-		for (int j = 0; j < 3; ++j)		
-			vertexVector.push_back(0.0);
 		vertexVector.push_back(i*stepS + stepS);
 		vertexVector.push_back(stepT);
+		normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta + stepRzx), radius * cos(gama), radius * sin(gama) * cos(theta + stepRzx)));
+		vertexVector.push_back(normal.x);
+		vertexVector.push_back(normal.y);
+		vertexVector.push_back(normal.z);
 		vertexNum++;
 
 		vertexVector.push_back(0.0);				//x
 		vertexVector.push_back(radius);				//y
 		vertexVector.push_back(0.0);				//z
-		for (int j = 0; j < 3; ++j)		//为rgb坐标预留空间
-			vertexVector.push_back(0.0);
 		vertexVector.push_back(i*stepS);//s
 		vertexVector.push_back(0);					//t
+		normal = glm::normalize(glm::vec3(0.0, radius, 0.0));
+		vertexVector.push_back(normal.x);
+		vertexVector.push_back(normal.y);
+		vertexVector.push_back(normal.z);
 		vertexNum++;
 	}
 
@@ -67,58 +74,70 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 			vertexVector.push_back(radius * sin(gama) * sin(theta));	
 			vertexVector.push_back(radius * cos(gama));					
 			vertexVector.push_back(radius * sin(gama) * cos(theta));	
-			for (int j = 0; j < 3; ++j)		
-				vertexVector.push_back(0.0);
 			vertexVector.push_back(j * stepS);
 			vertexVector.push_back(i * stepT);
+			normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta), radius * cos(gama), radius * sin(gama) * cos(theta)));
+			vertexVector.push_back(normal.x);
+			vertexVector.push_back(normal.y);
+			vertexVector.push_back(normal.z);
 			vertexNum++;
 			//	2
 			vertexVector.push_back(radius * sin(gama + stepY) * sin(theta));	
 			vertexVector.push_back(radius * cos(gama + stepY));					
 			vertexVector.push_back(radius * sin(gama + stepY) * cos(theta));	
-			for (int j = 0; j < 3; ++j)		
-				vertexVector.push_back(0.0);
 			vertexVector.push_back(j * stepS);
 			vertexVector.push_back(i*stepT + stepT);
+			normal = glm::normalize(glm::vec3(radius * sin(gama + stepY) * sin(theta), radius * cos(gama + stepY), radius * sin(gama + stepY) * cos(theta)));
+			vertexVector.push_back(normal.x);
+			vertexVector.push_back(normal.y);
+			vertexVector.push_back(normal.z);
 			vertexNum++;
 			//	3
 			vertexVector.push_back(radius * sin(gama + stepY) * sin(theta + stepRzx));
 			vertexVector.push_back(radius * cos(gama + stepY));
 			vertexVector.push_back(radius * sin(gama + stepY) * cos(theta + stepRzx));
-			for (int j = 0; j < 3; ++j)
-				vertexVector.push_back(0.0);
 			vertexVector.push_back(j*stepS + stepS);
 			vertexVector.push_back(i*stepT + stepT);
+			normal = glm::normalize(glm::vec3(radius * sin(gama + stepY) * sin(theta + stepRzx), radius * cos(gama + stepY), radius * sin(gama + stepY) * cos(theta + stepRzx)));
+			vertexVector.push_back(normal.x);
+			vertexVector.push_back(normal.y);
+			vertexVector.push_back(normal.z);
 			vertexNum++;
 			//右上方三角面片
 			//	3
 			vertexVector.push_back(radius * sin(gama + stepY) * sin(theta + stepRzx));
 			vertexVector.push_back(radius * cos(gama + stepY));
 			vertexVector.push_back(radius * sin(gama + stepY) * cos(theta + stepRzx));
-			for (int j = 0; j < 3; ++j)
-				vertexVector.push_back(0.0);
 			vertexVector.push_back(j*stepS + stepS);
 			vertexVector.push_back(i*stepT + stepT);
+			normal = glm::normalize(glm::vec3(radius * sin(gama + stepY) * sin(theta + stepRzx), radius * cos(gama + stepY), radius * sin(gama + stepY) * cos(theta + stepRzx)));
+			vertexVector.push_back(normal.x);
+			vertexVector.push_back(normal.y);
+			vertexVector.push_back(normal.z);
 			vertexNum++;
 
 			//	4
 			vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));
 			vertexVector.push_back(radius * cos(gama));
 			vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));
-			for (int j = 0; j < 3; ++j)
-				vertexVector.push_back(0.0);
 			vertexVector.push_back(j * stepS + stepS);
 			vertexVector.push_back(i * stepT);			//原本这个地方忘记乘i，搞了几个小时贴图紊乱。。。。
+			normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta + stepRzx), radius * cos(gama), radius * sin(gama) * cos(theta + stepRzx)));
+			vertexVector.push_back(normal.x);
+			vertexVector.push_back(normal.y);
+			vertexVector.push_back(normal.z);
 			vertexNum++;
 		
 			//	1
 			vertexVector.push_back(radius * sin(gama) * sin(theta));
 			vertexVector.push_back(radius * cos(gama));
 			vertexVector.push_back(radius * sin(gama) * cos(theta));
-			for (int j = 0; j < 3; ++j)
-				vertexVector.push_back(0.0);
 			vertexVector.push_back(j * stepS);
 			vertexVector.push_back(i * stepT);
+			normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta), radius * cos(gama), radius * sin(gama) * cos(theta)));
+			vertexVector.push_back(normal.x);
+			vertexVector.push_back(normal.y);
+			vertexVector.push_back(normal.z);
 			vertexNum++;
 		}
 	}		
@@ -133,29 +152,35 @@ SphereGenerator::SphereGenerator(float radius,int stepnum)
 		vertexVector.push_back(0);
 		vertexVector.push_back(-radius);
 		vertexVector.push_back(0);
-		for (int j = 0; j < 3; ++j)
-			vertexVector.push_back(0.0);
 		vertexVector.push_back(i*stepS + stepS);
 		vertexVector.push_back(1);
+		normal = glm::normalize(glm::vec3(0, -radius, 0));
+		vertexVector.push_back(normal.x);
+		vertexVector.push_back(normal.y);
+		vertexVector.push_back(normal.z);
 		vertexNum++;
 		//第三个点
 		vertexVector.push_back(radius * sin(gama) * sin(theta + stepRzx));
 		vertexVector.push_back(radius * cos(gama));
 		vertexVector.push_back(radius * sin(gama) * cos(theta + stepRzx));
-		for (int j = 0; j < 3; ++j)
-			vertexVector.push_back(0.0);
 		vertexVector.push_back(i*stepS + stepS);
 	    vertexVector.push_back(1 - stepT);
+		normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta + stepRzx), radius * cos(gama), radius * sin(gama) * cos(theta + stepRzx)));
+		vertexVector.push_back(normal.x);
+		vertexVector.push_back(normal.y);
+		vertexVector.push_back(normal.z);
 		vertexNum++;
 
 		//第一个点
 		vertexVector.push_back(radius * sin(gama) * sin(theta));
 		vertexVector.push_back(radius * cos(gama));
 		vertexVector.push_back(radius * sin(gama) * cos(theta));
-		for (int j = 0; j < 3; ++j)		//为rgb和st坐标预留空间
-			vertexVector.push_back(0.0);
 		vertexVector.push_back(i*stepS);
 		vertexVector.push_back(1 - stepT);
+		normal = glm::normalize(glm::vec3(radius * sin(gama) * sin(theta), radius * cos(gama), radius * sin(gama) * cos(theta)));
+		vertexVector.push_back(normal.x);
+		vertexVector.push_back(normal.y);
+		vertexVector.push_back(normal.z);
 		vertexNum++;
 	}
 
