@@ -3,7 +3,7 @@
 #include "SphereGenerator.h"
 
 enum { sun = 0, mercury };
-enum { vPosition = 0, color, textCoord };
+enum { vPosition = 0, textCoord,  normal};
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 1024;

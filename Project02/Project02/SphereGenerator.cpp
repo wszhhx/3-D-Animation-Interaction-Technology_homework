@@ -199,8 +199,9 @@ void SphereGenerator::PrintVertexInfo() {
 	}
 	int index = 1;
 	for (int i = 0; i < vertexNum*8; i += 8) {
-		printf("顶点 %d —— 坐标XYZ : (%.4f , %.4f, %.4f)  纹理ST：(%.4f , %.4f)\n", index, vertexArray[i], vertexArray[i + 1], vertexArray[i + 2],
-			vertexArray[i+6], vertexArray[i+7]);
+		printf("顶点 %d —— 坐标XYZ : (%.4f , %.4f, %.4f)  纹理ST：(%.4f , %.4f)  法向量：（%.4f, %.4f, %.4f）\n", index, vertexArray[i], vertexArray[i + 1], vertexArray[i + 2],
+			vertexArray[i + 3], vertexArray[i + 4], vertexArray[i + 5], vertexArray[i + 6],
+			vertexArray[i + 7]);
 		index += 1;
 	}
 }
