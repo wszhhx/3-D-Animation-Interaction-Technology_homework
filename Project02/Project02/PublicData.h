@@ -14,9 +14,11 @@ extern SphereGenerator planetEntities[];
 
 extern GLfloat lastTime;
 extern GLfloat deltaTime;
-extern GLuint program;
+extern GLuint planetProgram;
+extern GLuint starProgram;
 
 
 
 extern ShaderInfo planetShaders[];
+extern ShaderInfo starShaders[];
 
