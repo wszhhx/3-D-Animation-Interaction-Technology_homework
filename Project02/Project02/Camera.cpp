@@ -109,7 +109,7 @@ void Camera::updateSphericalCoord() {
 
 void Camera::FocusPlanet(int planet) {	//ÉãÏñ»ú¸úËæÄ³ĞÇÇò
 	focusPlanet = planet;
-	aimD = planetEntities[planet].radius * 3;
+	aimD = planetEntities[planet].radius * 12;
 	std::cout << aimD << std::endl;
 	float distance = glm::length(planetEntities[planet].coreData.position - position) + aimD;
 	glm::vec3 planetPos = planetEntities[planet].coreData.position;

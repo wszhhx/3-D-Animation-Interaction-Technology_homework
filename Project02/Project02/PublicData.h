@@ -2,7 +2,7 @@
 #include "MyShaderLoader.h"
 #include "SphereGenerator.h"
 
-enum { sun = 0, mercury };
+enum { sun = 0, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune};
 enum { vPosition = 0, textCoord,  normal};
 
 const int SCREEN_WIDTH = 1024;
