@@ -1,5 +1,5 @@
 ﻿# 本项目的ignore
-
+Assimp/
 Debug/
 .vs/
 *.VC.db

@@ -72,8 +72,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\headers;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\Assimp\include;E:\图形学工程\21851051-张皓翔\OpenGLStuff\headers;$(IncludePath)</IncludePath>
+    <LibraryPath>E:\图形学工程\21851051-张皓翔\OpenGLStuff\Assimp\lib;E:\图形学工程\21851051-张皓翔\OpenGLStuff\libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -93,12 +93,12 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>E:\图形学工程\21851051-张皓翔\OpenGLStuff\eigen3;E:\图形学工程\21851051-张皓翔\OpenGLStuff\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files\Assimp;E:\图形学工程\21851051-张皓翔\OpenGLStuff\eigen3;E:\图形学工程\21851051-张皓翔\OpenGLStuff\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;glew32d.lib;SOIL.lib;opengl32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32d.lib;SOIL.lib;opengl32.Lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -155,10 +155,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
+    <ClCompile Include="Project03.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Project03.cpp" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Texture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="model.frag" />
+    <None Include="model.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
