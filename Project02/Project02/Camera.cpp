@@ -9,13 +9,13 @@ Camera::Camera(float sensivitity = 1.0, float depth = 1.0)
 	viewUp = glm::vec3(0.0, 1.0, 0.0);
 	forward = glm::normalize(glm::vec3(0.0, 0.0, -1.0));
 	side = glm::vec3(1.0, 0.0, 0.0);
-	position = glm::vec3(0.0, 0.0, depth);
+	position = glm::vec3(0.0, 80, 40);
 
 	focusPlanet = -1;
 	
 	firstMouseMove = true;
 	mouseSensitivity = sensivitity;
-	moveSpeed = 2;
+	moveSpeed = 30;
 }
 
 
@@ -109,7 +109,7 @@ void Camera::updateSphericalCoord() {
 
 void Camera::FocusPlanet(int planet) {	//ÉãÏñ»ú¸úËæÄ³ÐÇÇò
 	focusPlanet = planet;
-	aimD = planetEntities[planet].radius * 12;
+	aimD = planetEntities[planet].radius * 5;
 	std::cout << aimD << std::endl;
 	float distance = glm::length(planetEntities[planet].coreData.position - position) + aimD;
 	glm::vec3 planetPos = planetEntities[planet].coreData.position;

@@ -7,7 +7,7 @@ enum { vPosition = 0, textCoord,  normal};
 
 const int SCREEN_WIDTH = 1024;
 const int SCREEN_HEIGHT = 1024;
-const int DAY_PER_SECOND = 5;
+const int DAY_PER_SECOND = 1;
 
 
 extern SphereGenerator planetEntities[];
